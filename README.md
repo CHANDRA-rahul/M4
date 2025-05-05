@@ -10,10 +10,26 @@ To write a C Program to perform the basic left shift operation for 44 integer nu
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+
+int main() {
+    int num = 44; // Initialize the number
+
+    // Perform left shift by 3 positions
+    int result = num << 3;
+
+    // Print the result
+    printf("Original number: %d\n", num);
+    printf("After left shifting by 3 positions: %d\n", result);
+
+    return 0;
+}
 
 ## OUTPUT
 
 
+Original number: 44
+After left shifting by 3 positions: 352
 
 
 
@@ -48,9 +64,33 @@ Write a C Program to check whether the two numbers are equal or not using simple
 
 ## PROGRAM
 
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    // Input two numbers
+    printf("Enter first number: ");
+    scanf("%d", &a);
+
+    printf("Enter second number: ");
+    scanf("%d", &b);
+
+    // Check if the numbers are equal
+    if (a == b) {
+        printf("The numbers are equal.\n");
+    } else {
+        printf("The numbers are not equal.\n");
+    }
+
+    return 0;
+}
 
 ## OUTPUT
-           
+Enter first number: 10
+Enter second number: 10
+The numbers are equal.
+    
 ## RESULT
 
 Thus the program to check whether the two numbers are equal or not using simple if statement has been executed successfully
@@ -70,8 +110,30 @@ Write a C Program to convert the given string into lowercase.
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+#include <ctype.h>  // For tolower() function
+
+int main() {
+    char str[100];
+
+    // Input the string
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);  // Use fgets for safe input (handles spaces)
+
+    // Convert the string to lowercase
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower(str[i]);  // Convert each character to lowercase
+    }
+
+    // Output the result
+    printf("String in lowercase: %s\n", str);
+
+    return 0;
+}
 
 ## OUTPUT
+Enter a string: Hello World!
+String in lowercase: hello world!
 
 
 
@@ -95,8 +157,43 @@ Write a C Program to count the total number of words in a given string using do 
 6.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0, wordCount = 0;
+
+    // Input the string
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);  // Use fgets to handle spaces
+
+    // Use a do-while loop to count words
+    do {
+        // Skip any spaces
+        while (str[i] == ' ' && str[i] != '\0') {
+            i++;
+        }
+
+        // If we encounter a non-space character, it's the start of a word
+        if (str[i] != ' ' && str[i] != '\0') {
+            wordCount++;
+
+            // Skip through the rest of the word
+            while (str[i] != ' ' && str[i] != '\0') {
+                i++;
+            }
+        }
+    } while (str[i] != '\0');  // Continue until we reach the end of the string
+
+    // Output the total word count
+    printf("Total number of words: %d\n", wordCount);
+
+    return 0;
+}
 
 ## OUTPUT
+Enter a string: Hello world! This is a test.
+Total number of words: 6
 
 
 
@@ -129,10 +226,44 @@ Step 7: After the loop, check the value of flag:
 Step 8: End the program.
 
 ## PROGRAM
+#include <stdio.h>
+
+int main() {
+    char str1[100], str2[100];
+    int i = 0, flag = 0;
+
+    // Input two strings
+    printf("Enter first string: ");
+    fgets(str1, sizeof(str1), stdin);
+    
+    printf("Enter second string: ");
+    fgets(str2, sizeof(str2), stdin);
+
+    // Compare strings character by character
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] != str2[i]) {
+            flag = 1;  // Set flag if strings are not equal
+            break;
+        }
+        i++;
+    }
+
+    // Check if strings are equal
+    if (flag == 0 && str1[i] == str2[i]) {
+        printf("Strings are equal.\n");
+    } else {
+        printf("Strings are not equal.\n");
+    }
+
+    return 0;
+}
 
 
 ## OUTPUT
  
+Enter first string: Hello
+Enter second string: Hello
+Strings are equal.
 
 ## RESULT
 Thus the C Program to compare two strings without using strcmp() has been executed successfully.
